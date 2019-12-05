@@ -550,7 +550,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 7921481136123835160}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.7
   m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
@@ -587,7 +587,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7921481137465745037}
   m_Layer: 0
-  m_Name: shootPoint
+  m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

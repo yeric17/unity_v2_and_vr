@@ -6,30 +6,45 @@ using TMPro;
 
 public class GameEventController : AutoCleanSingleton<GameEventController>
 {
-    private static List<Enemy> enemies = new List<Enemy>();
-    [SerializeField] static TextMeshProUGUI enemiesCountText;
+    private List<Enemy> enemies = new List<Enemy>();
+    [SerializeField] public TextMeshProUGUI enemiesCountText;
+    private Damagable player;
+    [SerializeField] private GameObject panelDead;
 
-    [SerializeField]
-
-
-    private void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (player == null)
         {
-            Destroy(enemies[0].gameObject);
+            player = GameObject.FindWithTag("Player").GetComponent<Damagable>();
         }
     }
 
-    public static void AddEnemy(Enemy e)
+    private void Update()
     {
-        enemies.Add(e);
-//        enemiesCountText.text = enemies.Count.ToString();
+        Debug.Log(player.IsDead);
+        if (player.IsDead)
+        {
+            panelDead.SetActive(true);
+            Invoke("GoMenu", 2f);
+        }
     }
 
-    public static void RemoveEnemy(Enemy e)
+    public void GoMenu()
+    {
+        panelDead.SetActive(false);
+        GameObject.Find("SceneController").GetComponent<SceneController>().Load(0);
+    }
+
+    public void AddEnemy(Enemy e)
+    {
+        enemies.Add(e);
+        enemiesCountText.text = enemies.Count.ToString();
+    }
+
+    public void RemoveEnemy(Enemy e)
     {
         enemies.Remove(e);
-//        enemiesCountText.text = enemies.Count.ToString();
+        enemiesCountText.text = enemies.Count.ToString();
     }
 
     private void WinGame()

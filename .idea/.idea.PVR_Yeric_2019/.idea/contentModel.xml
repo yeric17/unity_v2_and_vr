@@ -120,6 +120,7 @@
           <e p="RotationParticle.cs" t="Include" />
           <e p="SceneController.cs" t="Include" />
           <e p="Shoot.cs" t="Include" />
+          <e p="Timer.cs" t="Include" />
           <e p="UI" t="Include">
             <e p="InfoElement.cs" t="Include" />
             <e p="MiraController.cs" t="Include" />
@@ -130,6 +131,7 @@
             <e p="VolumeSlider.cs" t="Include" />
           </e>
           <e p="UI_Need.cs" t="Include" />
+          <e p="UsableObjects.cs" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">

@@ -38,7 +38,7 @@ public class UIRaycast : MonoBehaviour
 
         if (raycasts.Count > 0)
         {
-            // Debug.Log(raycasts[0].gameObject.name);
+            Debug.Log(raycasts[0].gameObject.name);
             if (!currentTarget)
             {
                 currentTarget = raycasts[0].gameObject;
@@ -59,18 +59,18 @@ public class UIRaycast : MonoBehaviour
         }
         else
         {
-            ExitTarget(pointer);
+            // ExitTarget(pointer);
         }
 
         if(Input.GetKey(KeyCode.UpArrow) && currentTarget != null){
-            currentTarget.GetComponent<Selectable>().OnPointerUp(pointer);
+            currentTarget.GetComponent<Button>().OnPointerClick(pointer);
         }
     }
 
     private void ExitTarget(PointerEventData pointer) {
         if (currentTarget)
         {
-            currentTarget.GetComponent<Selectable>().OnPointerExit(pointer);
+            currentTarget.GetComponent<Button>().OnPointerExit(pointer);
             if (currentTarget.GetComponent<InfoElement>())
             {
                 currentTarget.GetComponent<InfoElement>().Hide();

@@ -48,7 +48,7 @@ public class PlayerRaycastSystem : MonoBehaviour {
             if (interactObject)
             {
                 OnEnterInteraction(this);
-                playerMira.SetSizePoint(10f);
+                playerMira.SetSizePoint(3f);
             }
         }
         else

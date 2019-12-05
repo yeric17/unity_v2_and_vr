@@ -26,14 +26,18 @@ public class Enemy : MonoBehaviour
     readonly int velocityHash = Animator.StringToHash("velocity");
     readonly int isAttackHash = Animator.StringToHash("isAttack");
     private readonly int isDeadHash = Animator.StringToHash("isDead");
-    
-    
+
+    private void OnEnable()
+    {
+        GameEventController.Instance.AddEnemy(this);
+    }
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         enemyHead = transform.Find("EnemyHead");
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        GameEventController.AddEnemy(this);
+        
        
     }
     private void Update()
@@ -151,7 +155,7 @@ public class Enemy : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameEventController.RemoveEnemy(this);
+        GameEventController.Instance.RemoveEnemy(this);
     }
 }
 

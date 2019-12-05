@@ -5,6 +5,7 @@
     <explicitIncludes>
       <Path>Library/PackageCache/com.unity.collab-proxy@1.2.16</Path>
       <Path>Library/PackageCache/com.unity.ext.nunit@1.0.0</Path>
+      <Path>Library/PackageCache/com.unity.google.resonance.audio@1.18.3</Path>
       <Path>Library/PackageCache/com.unity.ide.rider@1.1.0</Path>
       <Path>Library/PackageCache/com.unity.ide.vscode@1.1.0</Path>
       <Path>Library/PackageCache/com.unity.postprocessing@2.1.7</Path>
@@ -13,6 +14,9 @@
       <Path>Library/PackageCache/com.unity.settings-manager@1.0.0</Path>
       <Path>Library/PackageCache/com.unity.test-framework@1.0.13</Path>
       <Path>Library/PackageCache/com.unity.textmeshpro@2.0.1</Path>
+      <Path>Library/PackageCache/com.unity.xr.googlevr.android@1.18.4</Path>
+      <Path>Library/PackageCache/com.unity.xr.oculus.standalone@1.38.4</Path>
+      <Path>Library/PackageCache/com.unity.xr.openvr.standalone@1.0.5</Path>
       <Path>Packages</Path>
       <Path>ProjectSettings</Path>
     </explicitIncludes>
@@ -22,7 +26,6 @@
       <Path>.vscode</Path>
       <Path>Library</Path>
       <Path>Logs</Path>
-      <Path>Temp</Path>
       <Path>obj</Path>
     </explicitExcludes>
   </component>

@@ -11,16 +11,15 @@ public class Player : AutoCleanSingleton<Player>
     public Image transitionImage = null;
     public float transitionTeleport = 1f;
     public LayerMask platformsLayer = 0;
-    float _time = 0;
+    //float _time = 0;
     [SerializeField] private Camera playerCamera;
     public Transform pointerMovement;
-    
-    new private void Awake()
+    private Timer transitionTimer;
+
+    private void Start()
     {
-        base.Awake();
+        transitionTimer = new Timer(transitionTeleport);
     }
-
-
 
     private void Update()
     {
@@ -32,11 +31,11 @@ public class Player : AutoCleanSingleton<Player>
     {
         if (playerStatus == PlayerStatus.teleport)
         {
-            _time += Time.deltaTime;
-            if (_time > transitionTeleport)
+            transitionTimer.Play();
+            if (transitionTimer.Completed)
             {
                 playerStatus = PlayerStatus.none;
-                _time = 0;
+                transitionTimer.Restart();
             }
             else
             {

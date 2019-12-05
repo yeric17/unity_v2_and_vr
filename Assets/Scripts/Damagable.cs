@@ -8,7 +8,7 @@ public class Damagable : MonoBehaviour
     public float healthPoints {get; private set;}
     [SerializeField] private float maxHealthPoints = 100f;
     [SerializeField] private float minHealthPoints = 0f;
-
+    public bool IsDead => healthPoints <= minHealthPoints;
     public event Action<Damagable> OnChangeHealth = delegate {};
 
 
