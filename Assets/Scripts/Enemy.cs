@@ -49,13 +49,7 @@ public class Enemy : MonoBehaviour
         {
             agent.isStopped = true;
         }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            enemyStatus = EnemyStatus.Dead;
-        }
-
-
+        
         animator.SetFloat(velocityHash, agent.velocity.magnitude);
         animator.SetBool(isAttackHash, enemyStatus == EnemyStatus.Attack);
         animator.SetBool(isDeadHash, enemyStatus == EnemyStatus.Dead);
@@ -143,7 +137,7 @@ public class Enemy : MonoBehaviour
         {
             seePlayer = hit.collider.gameObject.CompareTag("Player");
         }
-
+        Debug.Log(seePlayer && TargetAngle() < 60f);
         return   seePlayer && TargetAngle() < 60f;
     }
     private void OnDrawGizmos()

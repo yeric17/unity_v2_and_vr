@@ -23,13 +23,13 @@ public class GameEventController : AutoCleanSingleton<GameEventController>
     public static void AddEnemy(Enemy e)
     {
         enemies.Add(e);
-        enemiesCountText.text = enemies.Count.ToString();
+//        enemiesCountText.text = enemies.Count.ToString();
     }
 
     public static void RemoveEnemy(Enemy e)
     {
         enemies.Remove(e);
-        enemiesCountText.text = enemies.Count.ToString();
+//        enemiesCountText.text = enemies.Count.ToString();
     }
 
     private void WinGame()

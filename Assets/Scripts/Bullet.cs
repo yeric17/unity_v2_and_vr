@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,4 +17,8 @@ public class Bullet : DamageModifier
         Destroy(gameObject, lifeTime);
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        Destroy(gameObject);
+    }
 }

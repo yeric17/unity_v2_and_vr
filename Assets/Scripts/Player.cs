@@ -22,44 +22,56 @@ public class Player : AutoCleanSingleton<Player>
 
 
 
-    private void Update() {
-        if(playerStatus == PlayerStatus.teleport) {
+    private void Update()
+    {
+        TeleportTransition();
+        MovePointer();
+    }
+
+    private void TeleportTransition()
+    {
+        if (playerStatus == PlayerStatus.teleport)
+        {
             _time += Time.deltaTime;
-            if(_time > transitionTeleport){
+            if (_time > transitionTeleport)
+            {
                 playerStatus = PlayerStatus.none;
                 _time = 0;
             }
-            else {
-                float alpha = Mathf.Lerp(transitionImage.color.a, 0,.2f);
+            else
+            {
+                float alpha = Mathf.Lerp(transitionImage.color.a, 0, .06f);
                 SetTranstition(alpha);
             }
         }
-
-        MovePointer();
     }
 
     private void MovePointer()
     {
         RaycastHit hitInfo;
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
-        Physics.Raycast(ray, out hitInfo, 20f,
+        Physics.Raycast(ray, out hitInfo, 15f,
             platformsLayer);
         if (hitInfo.collider)
         {
-            if (hitInfo.collider)
-            {
-                pointerMovement.GetComponent<NavMeshAgent>().SetDestination(hitInfo.point);
-                if (Input.GetKeyDown(KeyCode.LeftArrow))
-                {
-                    transform.position = pointerMovement.transform.Find("SpawnPosition").GetComponent<Transform>()
-                        .position;
-                }
-            }
-
-            
+            pointerMovement.GetComponent<NavMeshAgent>().SetDestination(hitInfo.point);
         }
-
-
+        else
+        {
+            pointerMovement.GetComponent<NavMeshAgent>().SetDestination((playerCamera.transform.forward * 15f) + transform.position);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            if (GetComponent<PortalNeed>().Spend(2f * Vector3.Distance(transform.position, pointerMovement.position)))
+            {
+                transform.position = pointerMovement.transform.Find("SpawnPosition").GetComponent<Transform>()
+                    .position;
+                SetTranstition(1f);
+                playerStatus = PlayerStatus.teleport;
+            }
+        }
+        
     }
 
     public void SetStatus(PlayerStatus p ) {
